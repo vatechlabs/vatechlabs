@@ -1,0 +1,12 @@
+const test=require('node:test');const assert=require('node:assert/strict');const {validate}=require('../public/assets/validation.js');
+const valid={name:'Asha Rao',email:'asha+project@example.co.in',company:'',service:'Agentic AI',message:'We need a customer portal for our team.'};
+test('valid input and optional company',()=>assert.deepEqual(validate(valid).errors,{}));
+test('surrounding whitespace normalized',()=>assert.equal(validate({...valid,name:'  Asha Rao  '}).values.name,'Asha Rao'));
+test('international names and punctuation accepted',()=>{for(const name of ['李明','अक्षय कुमार','José D’Ávila','Anne-Marie O\'Neil'])assert.equal(validate({...valid,name}).errors.name,undefined,name)});
+test('empty and whitespace-only required inputs rejected',()=>{for(const key of ['name','email','service','message'])assert.ok(validate({...valid,[key]:'   '}).errors[key])});
+test('invalid name and oversized name rejected',()=>{for(const name of ['1234','a','a'.repeat(81),'Asha\nBcc:someone'])assert.ok(validate({...valid,name}).errors.name)});
+test('malformed emails rejected',()=>{for(const email of ['a@','a@localhost','a..b@example.com','a@-example.com','a@example..com','a@b.com\r\nBcc:x@y.com','a'.repeat(65)+'@example.com'])assert.ok(validate({...valid,email}).errors.email,email)});
+test('company limits apply only when provided',()=>{for(const company of ['A','a'.repeat(101),'\u0000Acme','!!!'])assert.ok(validate({...valid,company}).errors.company);assert.equal(validate({...valid,company:'R&D / Acme (India) Pvt. Ltd.'}).errors.company,undefined)});
+test('unknown service rejected',()=>assert.ok(validate({...valid,service:'Injected subject\r\nBcc: x@y.com'}).errors.service));
+test('message bounds and control characters',()=>{for(const message of ['short','a'.repeat(2001),'a'.repeat(30)+'\u0000'])assert.ok(validate({...valid,message}).errors.message);assert.equal(validate({...valid,message:'Line one describes the project.\nLine two gives details.'}).errors.message,undefined)});
+test('all field errors returned together',()=>assert.equal(Object.keys(validate({name:'',email:'',company:'a',service:'',message:''}).errors).length,5));
