@@ -20,7 +20,7 @@ This is a static site with client-side interactions. The form opens the visitor'
 - public/assets/app.js: service descriptions and client-side interactions.
 - public/assets/image-*: supplied logo and approved hero artwork.
 
-Business details: VedAan Tech Labs Private Limited; info@vatechlabs.com; +91 9130214039; WeWork Rajapushpa Summit, SY. 130P & 115/1P, Nanakramguda Rd, Financial District, Manikonda Jagir, Hyderabad, India.
+Business details: VedAan Tech Labs Private Limited; info@vatechlabs.com; +91 8801321326; WeWork Rajapushpa Summit, SY. 130P & 115/1P, Nanakramguda Rd, Financial District, Manikonda Jagir, Hyderabad, India.
 
 ## Validation
 JavaScript syntax, HTML structure, local asset paths, internal navigation targets, contact destinations and ZIP integrity are checked during packaging. Visual browser/device QA remains to be completed before public launch because browser preview was unavailable in this session. Check the mobile menu, service dialogs and email draft on your own devices before launch.
