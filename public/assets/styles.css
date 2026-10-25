@@ -50,3 +50,6 @@ html{scrollbar-gutter:stable}body{overflow-x:clip}.wrap,.hero-grid>div,.split>di
 .legal-header{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:82px}.legal-header>a:last-child{font-size:13px;color:#77dff5}.legal-brand{font-size:20px;font-weight:700}
 .legal-page{max-width:920px;padding-top:60px;padding-bottom:80px}.legal-page h1{font-size:clamp(34px,5vw,56px);line-height:1.1;margin:12px 0 20px}.legal-page section{padding:19px 0;border-bottom:1px solid var(--line)}.legal-page h2{font-size:22px;line-height:1.3;letter-spacing:normal;margin:12px 0}.legal-page p{color:#c7d5e7;margin:11px 0;overflow-wrap:anywhere}.legal-eyebrow{color:var(--cyan)!important;text-transform:uppercase;font-size:12px;letter-spacing:2px}.legal-updated{font-size:13px}.legal-footer{padding-top:32px;padding-bottom:32px;font-size:13px;color:var(--muted)}.legal-footer nav{display:flex;gap:12px 20px;flex-wrap:wrap}.legal-footer a{color:#dbe7f4}
 @media(max-width:650px){.legal-header{min-height:72px}.legal-brand{font-size:16px}.legal-page{padding-top:35px;padding-bottom:50px}}
+
+/* Legal pages use the same branded header/footer as the homepage */
+.legal-page{min-height:60vh}.legal-page section:last-child{border-bottom:0}.legal-page a:focus-visible{outline:2px solid var(--cyan)}
